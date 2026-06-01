@@ -374,7 +374,7 @@ h1, h2, h3 { text-wrap: balance; }
 /* ---- SHARED ---- */
 
 .section { padding: clamp(80px, 12vw, 140px) 0; }
-.section-inner { max-width: 1320px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+.section-inner { max-width: 1320px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); position: relative; z-index: 1; }
 .section-title {
   font-family: var(--ff-display);
   font-size: clamp(32px, 4.5vw, 56px);
@@ -383,6 +383,36 @@ h1, h2, h3 { text-wrap: balance; }
   line-height: 1;
 }
 .section-title em { font-style: italic; color: var(--gold); }
+
+/* ---- FILIGRANE BG ---- */
+.services-section,
+.transferts-section,
+.fleet-section,
+.conciergerie-section,
+.process-section,
+.reviews-section { position: relative; overflow: hidden; }
+
+.services-section::before,
+.transferts-section::before,
+.fleet-section::before,
+.conciergerie-section::before,
+.process-section::before,
+.reviews-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.07;
+  pointer-events: none;
+}
+.services-section::before { background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80'); }
+.transferts-section::before { background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80'); }
+.fleet-section::before { background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=80'); }
+.conciergerie-section::before { background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80'); }
+.process-section::before { background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80'); }
+.reviews-section::before { background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=80'); }
 
 /* ---- PROOF STRIP ---- */
 
@@ -985,8 +1015,7 @@ h1, h2, h3 { text-wrap: balance; }
 }
 
 @media (max-width: 640px) {
-  .nav-wa span { display: none; }
-  .nav-wa { padding: 8px; }
+  .nav-wa { display: none; }
   .hero-editorial h1 { font-size: clamp(28px, 8vw, 40px); }
   .routes-grid { grid-template-columns: 1fr; }
   .transferts-features { grid-template-columns: 1fr 1fr; gap: 20px; }
